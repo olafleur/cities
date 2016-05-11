@@ -14,23 +14,23 @@ public class SuggestionsResourceTestInt {
     private static final String HOME_URL = "http://localhost:8080";
     private static final String SUGGESTIONS_ENDPOINT = HOME_URL + "/suggestions";
 
+    private final HttpClient httpClient = new HttpClient();
+
     @Test
     public void noParameter_badRequest() throws IOException {
-        HttpClient httpClient = new HttpClient();
-
-        GetMethod getMethod = new GetMethod(SUGGESTIONS_ENDPOINT);
-        int status = httpClient.executeMethod(getMethod);
+        int status = getRequest(SUGGESTIONS_ENDPOINT);
 
         assertEquals(BAD_REQUEST.getStatusCode(), status);
     }
 
     @Test
     public void parameterPresent_returnsOk() throws IOException {
-        HttpClient httpClient = new HttpClient();
-
-        GetMethod getMethod = new GetMethod(SUGGESTIONS_ENDPOINT + "?q=Amos");
-        int status = httpClient.executeMethod(getMethod);
+        int status = getRequest(SUGGESTIONS_ENDPOINT + "?q=Amos");
 
         assertEquals(OK.getStatusCode(), status);
+    }
+
+    private int getRequest(String request) throws IOException {
+        return httpClient.executeMethod(new GetMethod(request));
     }
 }
