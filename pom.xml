@@ -10,6 +10,8 @@
 
     <properties>
         <resteasy.version>3.0.16.Final</resteasy.version>
+        <junit.version>4.12</junit.version>
+        <commons-httpclient.version>3.1</commons-httpclient.version>
     </properties>
 
     <dependencies>
@@ -29,13 +31,13 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
-            <version>3.1</version>
+            <version>${commons-httpclient.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

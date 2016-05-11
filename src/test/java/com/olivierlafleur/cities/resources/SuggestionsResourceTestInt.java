@@ -4,9 +4,10 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.HttpClient;
 import org.junit.Test;
 
-import javax.ws.rs.core.Response;
 import java.io.IOException;
 
+import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
+import static javax.ws.rs.core.Response.Status.OK;
 import static junit.framework.Assert.assertEquals;
 
 public class SuggestionsResourceTestInt {
@@ -16,11 +17,20 @@ public class SuggestionsResourceTestInt {
     @Test
     public void noParameter_badRequest() throws IOException {
         HttpClient httpClient = new HttpClient();
-        {
-            GetMethod getMethod = new GetMethod(SUGGESTIONS_ENDPOINT);
-            int status = httpClient.executeMethod(getMethod);
 
-            assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), status);
-        }
+        GetMethod getMethod = new GetMethod(SUGGESTIONS_ENDPOINT);
+        int status = httpClient.executeMethod(getMethod);
+
+        assertEquals(BAD_REQUEST.getStatusCode(), status);
+    }
+
+    @Test
+    public void parameterPresent_returnsOk() throws IOException {
+        HttpClient httpClient = new HttpClient();
+
+        GetMethod getMethod = new GetMethod(SUGGESTIONS_ENDPOINT + "?q=Amos");
+        int status = httpClient.executeMethod(getMethod);
+
+        assertEquals(OK.getStatusCode(), status);
     }
 }

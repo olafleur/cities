@@ -8,12 +8,17 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
+import static javax.ws.rs.core.Response.Status.OK;
 
 @Path("/suggestions")
 @Produces(MediaType.APPLICATION_JSON)
 public class SuggestionsResource {
     @GET
     public Response getSuggestions(@QueryParam("q") String query) {
-        return Response.status(BAD_REQUEST).build();
+        if(query == null || query.isEmpty()) {
+            return Response.status(BAD_REQUEST).build();
+        }
+
+        return Response.status(OK).build();
     }
 }
