@@ -14,13 +14,13 @@ public class SuggestionsResourceTestInt {
     private static final String SUGGESTIONS_ENDPOINT = HOME_URL + "/suggestions";
 
     @Test
-    public void testParameterRequired() throws IOException {
+    public void noParameter_badRequest() throws IOException {
         HttpClient httpClient = new HttpClient();
         {
             GetMethod getMethod = new GetMethod(SUGGESTIONS_ENDPOINT);
             int status = httpClient.executeMethod(getMethod);
 
-            assertEquals(Response.Status.OK.getStatusCode(), status);
+            assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), status);
         }
     }
 }
