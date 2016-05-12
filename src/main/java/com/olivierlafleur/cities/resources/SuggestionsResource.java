@@ -10,6 +10,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import java.util.Collections;
 import java.util.List;
 
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
@@ -49,6 +50,8 @@ public class SuggestionsResource {
 
             suggestions = suggestionService.retrieveSuggestions(query, lat, lng);
         }
+
+        Collections.sort(suggestions, (suggestion1, suggestion2) -> (int)(suggestion2.getScore()*10 - suggestion1.getScore()*10));
 
         return Response.ok(suggestions).build();
     }
