@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
 import static javax.ws.rs.core.Response.Status.OK;
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class SuggestionsResourceTestInt {
     private static final String HOME_URL = "http://localhost:8080";
