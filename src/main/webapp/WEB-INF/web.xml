@@ -5,20 +5,20 @@
 <web-app>
     <display-name>Cities</display-name>
 
-    <servlet>
-        <servlet-name>Resteasy</servlet-name>
-        <servlet-class>
-            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
-        </servlet-class>
+    <filter>
+        <filter-name>Resteasy</filter-name>
+        <filter-class>
+            org.jboss.resteasy.plugins.server.servlet.FilterDispatcher
+        </filter-class>
         <init-param>
             <param-name>javax.ws.rs.Application</param-name>
             <param-value>com.olivierlafleur.cities.CitiesApplication</param-value>
         </init-param>
-    </servlet>
+    </filter>
 
-    <servlet-mapping>
-        <servlet-name>Resteasy</servlet-name>
+    <filter-mapping>
+        <filter-name>Resteasy</filter-name>
         <url-pattern>/*</url-pattern>
-    </servlet-mapping>
+    </filter-mapping>
 
 </web-app>
