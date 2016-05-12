@@ -14,7 +14,8 @@ public class SuggestionsResourceTestInt {
     private static final String HOME_URL = "http://localhost:8080";
     private static final String SUGGESTIONS_ENDPOINT = HOME_URL + "/suggestions";
     private static final String A_CITY_QUERY = "?q=Amos";
-    private static final String A_WRONG_LAT_LONG = "&lat=48abcdef&long=-77.21413";
+    private static final String A_NON_NUMERICAL_LAT_LONG = "&lat=48abcdef&long=-77.21413";
+    private static final String A_NON_VALID_LAT_LONG = "&lat=48&long=181";
 
     private final HttpClient httpClient = new HttpClient();
 
@@ -33,8 +34,15 @@ public class SuggestionsResourceTestInt {
     }
 
     @Test
-    public void wrongLatitudeLongitude_returnsBadRequest() throws IOException {
-        int status = getRequest(SUGGESTIONS_ENDPOINT + A_CITY_QUERY + A_WRONG_LAT_LONG);
+    public void nonNumericalLatitude_returnsBadRequest() throws IOException {
+        int status = getRequest(SUGGESTIONS_ENDPOINT + A_CITY_QUERY + A_NON_NUMERICAL_LAT_LONG);
+
+        assertEquals(BAD_REQUEST.getStatusCode(), status);
+    }
+
+    @Test
+    public void invalidCoordinates_returnsBadRequest() throws IOException {
+        int status = getRequest(SUGGESTIONS_ENDPOINT + A_CITY_QUERY + A_NON_VALID_LAT_LONG);
 
         assertEquals(BAD_REQUEST.getStatusCode(), status);
     }

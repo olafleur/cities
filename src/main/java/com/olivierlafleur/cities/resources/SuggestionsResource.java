@@ -42,9 +42,17 @@ public class SuggestionsResource {
                 return Response.status(BAD_REQUEST).build();
             }
 
+            if (wrongCoordinates(lat, lng)) {
+                return Response.status(BAD_REQUEST).build();
+            }
+
             suggestions = suggestionService.retrieveSuggestions(query, lat, lng);
         }
 
         return Response.ok(suggestions).build();
+    }
+
+    private boolean wrongCoordinates(double lat, double lng) {
+        return lat < 0 || lat > 90 || lng < -180 || lng > 180;
     }
 }
