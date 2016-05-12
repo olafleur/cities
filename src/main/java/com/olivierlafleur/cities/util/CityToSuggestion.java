@@ -8,6 +8,6 @@ public class CityToSuggestion {
     public static Suggestion map(City city, double score) {
         String name = city.getName() + ", " + city.getStateprov() + ", " + city.getCountry();
 
-        return new Suggestion(name, city.getLatitude(), city.getLongitude(), score);
+        return new Suggestion(name, String.valueOf(city.getLatitude()), String.valueOf(city.getLongitude()), score);
     }
 }

@@ -13,10 +13,10 @@ public class CityToSuggestionTest {
 
         Suggestion actual = CityToSuggestion.map(city, 0.5);
 
-        Suggestion expected = new Suggestion("Amos, QC, Canada", 48.13247, -77.21413, 0.5);
+        Suggestion expected = new Suggestion("Amos, QC, Canada", "48.13247", "-77.21413", 0.5);
         assertEquals(expected.getName(), actual.getName());
-        assertEquals(expected.getLatitude(), actual.getLatitude(), 0.00001);
-        assertEquals(expected.getLongitude(), actual.getLongitude(), 0.00001);
+        assertEquals(expected.getLatitude(), String.valueOf(actual.getLatitude()));
+        assertEquals(expected.getLongitude(), String.valueOf(actual.getLongitude()));
         assertEquals(expected.getScore(), actual.getScore(), 0.00001);
     }
 }

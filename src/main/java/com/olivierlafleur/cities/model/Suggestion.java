@@ -2,11 +2,11 @@ package com.olivierlafleur.cities.model;
 
 public class Suggestion {
     private String name;
-    private double latitude;
-    private double longitude;
+    private String latitude;
+    private String longitude;
     private double score;
 
-    public Suggestion(String name, double latitude, double longitude, double score) {
+    public Suggestion(String name, String latitude, String longitude, double score) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -17,11 +17,11 @@ public class Suggestion {
         return name;
     }
 
-    public double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
