@@ -1,13 +1,14 @@
 package com.olivierlafleur.cities.resources;
 
+import com.olivierlafleur.cities.model.City;
 import com.olivierlafleur.cities.model.Suggestion;
 import com.olivierlafleur.cities.repository.Repository;
 import com.olivierlafleur.cities.util.CityToSuggestion;
+import com.olivierlafleur.cities.util.HaversineDistance;
 import com.olivierlafleur.cities.util.LevenshteinDistance;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SuggestionService {
     private final Repository repository;
@@ -17,18 +18,49 @@ public class SuggestionService {
     }
 
     public List<Suggestion> retrieveSuggestions(String query, double latitude, double longitude) {
+        List<City> cities = repository.getAllCities();
         List<Suggestion> suggestions = new ArrayList<>();
 
-        suggestions.add(new Suggestion("Amos", 30, 70, 0.5));
+        for (City city : cities) {
+            int nbOfDifferentCharacters = LevenshteinDistance.compute(
+                    city.getName().toLowerCase(), query.toLowerCase());
+
+            if (nbOfDifferentCharacters <= 2) {
+
+                double distanceKm = HaversineDistance.compute(
+                        latitude, longitude, city.getLatitude(), city.getLongitude());
+
+                double score = calculateScore(nbOfDifferentCharacters, distanceKm, query.length());
+
+                suggestions.add(CityToSuggestion.map(city, score));
+            }
+        }
 
         return suggestions;
     }
 
     public List<Suggestion> retrieveSuggestions(String query) {
-        return repository.getAllCities()
-                .stream()
-                .filter(x -> LevenshteinDistance.compute(x.getName().toLowerCase(), query.toLowerCase()) <= 2)
-                .map(x -> CityToSuggestion.map(x, 1.0))
-                .collect(Collectors.toList());
+        List<City> cities = repository.getAllCities();
+        List<Suggestion> suggestions = new ArrayList<>();
+
+        for (City city : cities) {
+            int nbOfDifferentCharacters = LevenshteinDistance.compute(city.getName().toLowerCase(), query.toLowerCase());
+
+            if (nbOfDifferentCharacters <= 2) {
+                suggestions.add(CityToSuggestion.map(city, calculateScore(nbOfDifferentCharacters, 0, query.length())));
+            }
+        }
+
+        return suggestions;
+    }
+
+    private double calculateScore(int nbOfDifferentCharacters, double distanceKm, int queryLength) {
+        double score = (double) nbOfDifferentCharacters / queryLength;
+
+        if (distanceKm > 50) {
+            score /= 2;
+        }
+
+        return score;
     }
 }

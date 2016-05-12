@@ -1,6 +1,7 @@
 package com.olivierlafleur.cities.util;
 
 //Source : https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#Java
+//Number of operations needed to go from one word to another
 public class LevenshteinDistance {
     private static int minimum(int a, int b, int c) {
         return Math.min(Math.min(a, b), c);
