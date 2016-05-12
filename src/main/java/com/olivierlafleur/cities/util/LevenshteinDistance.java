@@ -1,11 +1,12 @@
 package com.olivierlafleur.cities.util;
 
+//Source : https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#Java
 public class LevenshteinDistance {
     private static int minimum(int a, int b, int c) {
         return Math.min(Math.min(a, b), c);
     }
 
-    public static int computeLevenshteinDistance(CharSequence lhs, CharSequence rhs) {
+    public static int compute(CharSequence lhs, CharSequence rhs) {
         int[][] distance = new int[lhs.length() + 1][rhs.length() + 1];
 
         for (int i = 0; i <= lhs.length(); i++)

@@ -1,6 +1,7 @@
 package com.olivierlafleur.cities.resources;
 
 import com.olivierlafleur.cities.model.Suggestion;
+import com.olivierlafleur.cities.repository.InMemoryRepository;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -16,7 +17,7 @@ import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
 @Path("/suggestions")
 @Produces(MediaType.APPLICATION_JSON)
 public class SuggestionsResource {
-    private final SuggestionService suggestionService = new SuggestionService();
+    private final SuggestionService suggestionService = new SuggestionService(new InMemoryRepository());
 
     @GET
     public Response getSuggestions(@QueryParam("q") String query,
