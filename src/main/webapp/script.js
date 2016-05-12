@@ -1,7 +1,5 @@
 var citiesApp = angular.module("citiesApp", []);
 citiesApp.controller("CitiesCtrl", function($scope, $http) {
-    $scope.name = "Calvin Hobbes";
-
     $scope.changed = function (city) {
         if(city.length >= 3) {
             $http({
