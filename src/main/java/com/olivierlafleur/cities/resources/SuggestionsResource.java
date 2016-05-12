@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
+import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
 @Path("/suggestions")
 @Produces(MediaType.APPLICATION_JSON)
@@ -49,6 +50,10 @@ public class SuggestionsResource {
             }
 
             suggestions = suggestionService.retrieveSuggestions(query, lat, lng);
+        }
+
+        if(suggestions.isEmpty()) {
+            return Response.status(NOT_FOUND).build();
         }
 
         Collections.sort(suggestions, (suggestion1, suggestion2) -> (int)(suggestion2.getScore()*10 - suggestion1.getScore()*10));
