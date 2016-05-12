@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CitiesApplication extends Application {
-    private Set<Object> singletons = new HashSet<Object>();
+    private Set<Object> singletons = new HashSet<>();
 
     public CitiesApplication() {
         singletons.add(new SuggestionsResource());
