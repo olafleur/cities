@@ -55,7 +55,7 @@ public class SuggestionService {
     }
 
     private double calculateScore(int nbOfDifferentCharacters, double distanceKm, int queryLength) {
-        double score = (double) nbOfDifferentCharacters / queryLength;
+        double score = (double) (queryLength - nbOfDifferentCharacters) / queryLength;
 
         if (distanceKm > 50) {
             score /= 2;
