@@ -20,13 +20,30 @@ public class SuggestionsResource {
 
     @GET
     public Response getSuggestions(@QueryParam("q") String query,
-                                   @QueryParam("lat") double latitude,
-                                   @QueryParam("long") double longitude) {
-        if(query == null || query.isEmpty()) {
+                                   @QueryParam("lat") String latitude,
+                                   @QueryParam("long") String longitude) {
+        if (query == null || query.isEmpty()) {
             return Response.status(BAD_REQUEST).build();
         }
 
-        List<Suggestion> suggestions = suggestionService.retrieveSuggestions(query, latitude, longitude);
+        List<Suggestion> suggestions;
+
+        if (latitude == null || longitude == null) {
+            suggestions = suggestionService.retrieveSuggestions(query);
+        } else {
+
+            double lat;
+            double lng;
+
+            try {
+                lat = Double.parseDouble(latitude);
+                lng = Double.parseDouble(longitude);
+            } catch (NumberFormatException e) {
+                return Response.status(BAD_REQUEST).build();
+            }
+
+            suggestions = suggestionService.retrieveSuggestions(query, lat, lng);
+        }
 
         return Response.ok(suggestions).build();
     }

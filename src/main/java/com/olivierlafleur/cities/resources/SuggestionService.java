@@ -7,6 +7,18 @@ import java.util.List;
 
 public class SuggestionService {
     public List<Suggestion> retrieveSuggestions(String query, double latitude, double longitude) {
-        return new ArrayList<Suggestion>();
+        List<Suggestion> suggestions = new ArrayList<Suggestion>();
+
+        suggestions.add(new Suggestion("Amos", 30, 70, 0.5));
+
+        return suggestions;
+    }
+
+    public List<Suggestion> retrieveSuggestions(String query) {
+        List<Suggestion> suggestions = new ArrayList<Suggestion>();
+
+        suggestions.add(new Suggestion("Amos", 30, 70, 0.5));
+
+        return suggestions;
     }
 }

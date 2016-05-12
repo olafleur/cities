@@ -6,6 +6,13 @@ public class Suggestion {
     private double longitude;
     private double score;
 
+    public Suggestion(String name, double latitude, double longitude, double score) {
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.score = score;
+    }
+
     public String getName() {
         return name;
     }
