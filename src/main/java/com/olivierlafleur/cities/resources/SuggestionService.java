@@ -46,8 +46,12 @@ public class SuggestionService {
         for (City city : cities) {
             int nbOfDifferentCharacters = LevenshteinDistance.compute(city.getName().toLowerCase(), query.toLowerCase());
 
-            if (nbOfDifferentCharacters <= 2) {
-                suggestions.add(CityToSuggestion.map(city, calculateScore(nbOfDifferentCharacters, 0, query.length())));
+            if (city.getName().startsWith(query)) {
+                suggestions.add(CityToSuggestion.map(city, calculateScore(0, 0, query.length())));
+            } else {
+                if (nbOfDifferentCharacters <= 2) {
+                    suggestions.add(CityToSuggestion.map(city, calculateScore(nbOfDifferentCharacters, 0, query.length())));
+                }
             }
         }
 
