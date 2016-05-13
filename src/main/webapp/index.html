@@ -13,6 +13,8 @@
 <div class="container">
     <div class="page-header">
         <h1>Recherche de villes</h1>
+
+        <p id="localisation"></p>
     </div>
 
     <label for="city">
@@ -37,6 +39,21 @@
         </tr>
         </tbody>
     </table>
+
+    <script>
+        var x = document.getElementById("localisation");
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                    "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
 </div>
 </body>
 </html>
