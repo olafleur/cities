@@ -5,6 +5,8 @@ citiesApp.controller("CitiesCtrl", function ($scope, $http) {
             $http.get('/suggestions?q=' + city)
                 .then(function (response) {
                     $scope.cities = response.data;
+                }, function () {
+                    $scope.cities = [];
                 });
         } else {
             $scope.cities = [];
