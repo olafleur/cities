@@ -10,14 +10,33 @@
     <script src="script.js"></script>
 </head>
 <body ng-controller="CitiesCtrl">
-    <div class="container">
-        <div class="page-header">
-            <h1>Recherche de villes</h1>
-        </div>
-
-        <label for="city">
-            <input ng-keyup="changed(city)" id="city" name="city" ng-model="city">
-        </label>
+<div class="container">
+    <div class="page-header">
+        <h1>Recherche de villes</h1>
     </div>
+
+    <label for="city">
+        <input ng-keyup="changed(city)" id="city" name="city" ng-model="city">
+    </label>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="ville in cities">
+            <td>{{ville.name}}</td>
+            <td>{{ville.latitude}}</td>
+            <td>{{ville.longitude}}</td>
+            <td>{{ville.score}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
