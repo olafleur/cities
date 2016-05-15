@@ -65,6 +65,7 @@
                 <version>2.2</version>
                 <configuration>
                     <port>80</port>
+                    <httpsPort>80</httpsPort>
                     <path>/</path>
                     <ignorePackaging>true</ignorePackaging>
                 </configuration>
