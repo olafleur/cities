@@ -65,6 +65,8 @@
                 <version>2.2</version>
                 <configuration>
                     <port>8080</port>
+                    <httpsPort>8443</httpsPort>
+                    <keystorePass>bonjour</keystorePass>
                     <path>/</path>
                     <ignorePackaging>true</ignorePackaging>
                 </configuration>
