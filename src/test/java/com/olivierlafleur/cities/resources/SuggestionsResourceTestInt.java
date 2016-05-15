@@ -12,7 +12,7 @@ import static javax.ws.rs.core.Response.Status.OK;
 import static org.junit.Assert.assertEquals;
 
 public class SuggestionsResourceTestInt {
-    private static final String HOME_URL = "http://localhost";
+    private static final String HOME_URL = "http://localhost:8080";
     private static final String SUGGESTIONS_ENDPOINT = HOME_URL + "/suggestions";
     private static final String A_CITY_QUERY = "?q=Amos";
     private static final String A_NONEXISTENT_CITY_QUERY = "?q=NoCityHasThisName";
