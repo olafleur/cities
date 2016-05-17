@@ -66,6 +66,7 @@
                 <configuration>
                     <port>8080</port>
                     <httpsPort>8443</httpsPort>
+                    <keystoreFile>keystore.jks</keystoreFile>
                     <keystorePass>bonjour</keystorePass>
                     <path>/</path>
                     <ignorePackaging>true</ignorePackaging>
