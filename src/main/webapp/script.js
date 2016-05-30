@@ -11,5 +11,14 @@ citiesApp.controller("CitiesCtrl", function ($scope, $http) {
         } else {
             $scope.cities = [];
         }
+    };
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position){
+            $scope.$apply(function() {
+                $scope.latitude = position.coords.latitude;
+                $scope.longitude = position.coords.longitude;
+            });
+        });
     }
 });
