@@ -1,17 +1,17 @@
 package com.olivierlafleur.cities;
 
-import com.olivierlafleur.cities.repository.TestRepository;
+import com.olivierlafleur.cities.repository.CucumberTestsRepository;
 import com.olivierlafleur.cities.resources.SuggestionsResource;
 
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
 
-public class TestApplication extends Application {
+public class CucumberTestsApplication extends Application {
     private Set<Object> singletons = new HashSet<>();
 
-    public TestApplication() {
-        singletons.add(new SuggestionsResource(new TestRepository()));
+    public CucumberTestsApplication() {
+        singletons.add(new SuggestionsResource(new CucumberTestsRepository()));
     }
 
     @Override

@@ -12,7 +12,7 @@
         </filter-class>
         <init-param>
             <param-name>javax.ws.rs.Application</param-name>
-            <param-value>com.olivierlafleur.cities.TestApplication</param-value>
+            <param-value>com.olivierlafleur.cities.CucumberTestsApplication</param-value>
         </init-param>
     </filter>
 

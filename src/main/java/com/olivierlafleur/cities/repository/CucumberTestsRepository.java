@@ -5,7 +5,7 @@ import com.olivierlafleur.cities.model.City;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestRepository implements Repository {
+public class CucumberTestsRepository implements Repository {
     @Override
     public List<City> getAllCities() {
         List<City> cities = new ArrayList<>();
