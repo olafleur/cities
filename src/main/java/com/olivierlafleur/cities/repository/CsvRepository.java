@@ -17,7 +17,7 @@ public class CsvRepository implements Repository {
     }
 
     @Override
-    public List<City> getAllCities() {
+    public List getAllCities() {
         return cities;
     }
 

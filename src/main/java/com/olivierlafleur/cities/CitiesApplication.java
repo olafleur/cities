@@ -1,6 +1,6 @@
 package com.olivierlafleur.cities;
 
-import com.olivierlafleur.cities.repository.CsvRepository;
+import com.olivierlafleur.cities.repository.MySqlRepository;
 import com.olivierlafleur.cities.resources.SuggestionsResource;
 
 import javax.ws.rs.core.Application;
@@ -11,7 +11,7 @@ public class CitiesApplication extends Application {
     private Set<Object> singletons = new HashSet<>();
 
     public CitiesApplication() {
-        singletons.add(new SuggestionsResource(new CsvRepository()));
+        singletons.add(new SuggestionsResource(new MySqlRepository()));
     }
 
     @Override
