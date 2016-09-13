@@ -1,7 +1,7 @@
 package com.olivierlafleur.cities.resources;
 
 import com.olivierlafleur.cities.model.Suggestion;
-import com.olivierlafleur.cities.repository.InMemoryRepository;
+import com.olivierlafleur.cities.repository.Repository;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,7 +19,12 @@ import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 @Path("/suggestions")
 @Produces(MediaType.APPLICATION_JSON)
 public class SuggestionsResource {
-    private final SuggestionService suggestionService = new SuggestionService(new InMemoryRepository());
+    private final SuggestionService suggestionService;
+
+
+    public SuggestionsResource(Repository repository) {
+        suggestionService = new SuggestionService(repository);
+    }
 
     @GET
     public Response getSuggestions(@QueryParam("q") String query,

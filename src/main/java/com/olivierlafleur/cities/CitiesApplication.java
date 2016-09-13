@@ -1,5 +1,6 @@
 package com.olivierlafleur.cities;
 
+import com.olivierlafleur.cities.repository.InMemoryRepository;
 import com.olivierlafleur.cities.resources.SuggestionsResource;
 
 import javax.ws.rs.core.Application;
@@ -10,7 +11,7 @@ public class CitiesApplication extends Application {
     private Set<Object> singletons = new HashSet<>();
 
     public CitiesApplication() {
-        singletons.add(new SuggestionsResource());
+        singletons.add(new SuggestionsResource(new InMemoryRepository()));
     }
 
     @Override
