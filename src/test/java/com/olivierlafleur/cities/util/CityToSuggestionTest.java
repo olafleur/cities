@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class CityToSuggestionTest {
     @Test
     public void mapCityToSuggestion() {
-        City city = new City(1l, "Amos", 48.13247, -77.21413, "Canada", "QC");
+        City city = new City(1L, "Amos", 48.13247, -77.21413, "Canada", "QC");
 
         Suggestion actual = CityToSuggestion.map(city, 0.5);
 

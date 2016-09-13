@@ -25,9 +25,9 @@ public class SuggestionServiceTest {
         public List<City> getAllCities() {
             List<City> cities = new ArrayList<>();
 
-            cities.add(new City(1l, "Amos", 0, 0, "Canada", "QC"));
-            cities.add(new City(2l, "Québec", 0, 0, "Canada", "QC"));
-            cities.add(new City(3l, "Omas", 0, 0, "Other country", "AB"));
+            cities.add(new City(1L, "Amos", 0, 0, "Canada", "QC"));
+            cities.add(new City(2L, "Québec", 0, 0, "Canada", "QC"));
+            cities.add(new City(3L, "Omas", 0, 0, "Other country", "AB"));
 
             return cities;
         }

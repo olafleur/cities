@@ -9,10 +9,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InMemoryRepository implements Repository {
+public class CsvRepository implements Repository {
     private List<City> cities;
 
-    public InMemoryRepository() {
+    public CsvRepository() {
         cities = retrieveCities();
     }
 
