@@ -39,7 +39,7 @@ public class RechercheVilleSteps {
 
     @Alors("^je ne devrais avoir aucun résultat$")
     public void jeNeDevraisAvoirAucunRésultat() throws Throwable {
-        assertCssClassNotPresent(driver, "row");
+        assertCssClassNotPresent(driver, "villes");
     }
 
     public static void assertCssClassNotPresent(WebDriver driver, String cssClass) {
