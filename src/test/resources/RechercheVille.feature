@@ -11,3 +11,9 @@ Fonctionnalité: Recherche d'une ville
     Étant donné que j'entre sur la page de recherche de villes
     Quand j'entre la chaine lev
     Alors je ne devrais avoir aucun résultat
+
+  Scénario: Entrer et supprimer du contenu
+    Étant donné que j'entre sur la page de recherche de villes
+    Quand j'entre la chaine st-
+    Et je vide le champ de recherche
+    Alors je ne devrais avoir aucun résultat

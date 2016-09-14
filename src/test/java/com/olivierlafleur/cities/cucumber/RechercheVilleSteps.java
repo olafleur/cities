@@ -1,6 +1,7 @@
 package com.olivierlafleur.cities.cucumber;
 
 import cucumber.api.java.fr.Alors;
+import cucumber.api.java.fr.Et;
 import cucumber.api.java.fr.Quand;
 import cucumber.api.java.fr.Étantdonné;
 import org.junit.Assert;
@@ -42,7 +43,13 @@ public class RechercheVilleSteps {
         assertCssClassNotPresent(driver, "villes");
     }
 
-    public static void assertCssClassNotPresent(WebDriver driver, String cssClass) {
+    @Et("^je vide le champ de recherche$")
+    public void jeVideLeChampDeRecherche() throws Throwable {
+        driver.findElement(By.name("city")).clear();
+        driver.findElement(By.name("city")).sendKeys(" ");
+    }
+
+    private static void assertCssClassNotPresent(WebDriver driver, String cssClass) {
         try {
             driver.findElement(By.className(cssClass));
             fail(cssClass + " is present");
