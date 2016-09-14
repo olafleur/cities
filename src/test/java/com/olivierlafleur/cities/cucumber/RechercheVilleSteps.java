@@ -1,16 +1,18 @@
 package com.olivierlafleur.cities.cucumber;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.fr.Alors;
 import cucumber.api.java.fr.Quand;
 import cucumber.api.java.fr.Étantdonné;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.junit.Assert.fail;
 
 public class RechercheVilleSteps {
     private WebDriver driver = new ChromeDriver();
@@ -37,6 +39,15 @@ public class RechercheVilleSteps {
 
     @Alors("^je ne devrais avoir aucun résultat$")
     public void jeNeDevraisAvoirAucunRésultat() throws Throwable {
-        Assert.assertNull(driver.findElement(By.className("table")));
+        assertCssClassNotPresent(driver, "row");
+    }
+
+    public static void assertCssClassNotPresent(WebDriver driver, String cssClass) {
+        try {
+            driver.findElement(By.className(cssClass));
+            fail(cssClass + " is present");
+        } catch (NoSuchElementException ex) {
+        /* do nothing, css class is not present, assert is passed */
+        }
     }
 }
