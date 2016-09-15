@@ -31,7 +31,7 @@ public class RechercheVilleSteps {
 
     @Alors("^je devrais trouver (.*) dans les résultats de ville$")
     public void jeDevraisTrouverDansLesRésultatsDeVille(String resultat) throws Throwable {
-        wait.until((ExpectedCondition<Boolean>) webdriver -> webdriver.findElement(By.className("row")) != null);
+        wait.until((ExpectedCondition<Boolean>) webdriver -> webdriver.findElement(By.className("villes")) != null);
 
         Assert.assertTrue(driver.findElement(By.tagName("body")).getText().contains(resultat));
 
@@ -41,6 +41,8 @@ public class RechercheVilleSteps {
     @Alors("^je ne devrais avoir aucun résultat$")
     public void jeNeDevraisAvoirAucunRésultat() throws Throwable {
         assertCssClassNotPresent(driver, "villes");
+
+        driver.close();
     }
 
     @Et("^je vide le champ de recherche$")
