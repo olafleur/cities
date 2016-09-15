@@ -28,6 +28,7 @@ public class CucumberTestsApplication extends Application {
             List<City> cities = new ArrayList<>();
 
             cities.add(new City(8L, "St-Romuald", 3, 4, "Canada", "Québec"));
+            cities.add(new City(9L, "Amos", 45.3, 37.2, "Canada", "Québec"));
 
             return cities;
         }
