@@ -4,8 +4,8 @@ Fonctionnalité: Recherche d'une ville
 
   Scénario: Une recherche d'une ville existante
     Étant donné que j'entre sur la page de recherche de villes
-    Quand j'entre la chaine st-
-    Alors je devrais trouver St-Romuald dans les résultats de ville
+    Quand j'entre la chaine amo
+    Alors je devrais trouver Amo dans les résultats de ville
 
   Scénario: Une recherche d'une ville inexistante
     Étant donné que j'entre sur la page de recherche de villes
@@ -14,7 +14,7 @@ Fonctionnalité: Recherche d'une ville
 
   Scénario: Entrer et supprimer du contenu
     Étant donné que j'entre sur la page de recherche de villes
-    Quand j'entre la chaine st-
+    Quand j'entre la chaine amo
     Et je vide le champ de recherche
     Alors je ne devrais avoir aucun résultat
 

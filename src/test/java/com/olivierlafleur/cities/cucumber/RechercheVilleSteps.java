@@ -6,6 +6,7 @@ import cucumber.api.java.fr.Quand;
 import cucumber.api.java.fr.Étantdonné;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -47,8 +48,9 @@ public class RechercheVilleSteps {
 
     @Et("^je vide le champ de recherche$")
     public void jeVideLeChampDeRecherche() throws Throwable {
-        driver.findElement(By.name("city")).clear();
-        driver.findElement(By.name("city")).sendKeys(" ");
+        driver.findElement(By.name("city")).sendKeys(Keys.BACK_SPACE);
+        driver.findElement(By.name("city")).sendKeys(Keys.BACK_SPACE);
+        driver.findElement(By.name("city")).sendKeys(Keys.BACK_SPACE);
     }
 
     private static void assertCssClassNotPresent(WebDriver driver, String cssClass) {
