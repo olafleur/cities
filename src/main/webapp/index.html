@@ -14,8 +14,11 @@
     <div class="page-header">
         <h1>Recherche de villes</h1>
 
-        Latitude : <b>{{latitude}}</b><br>
-        Longitude : <b>{{longitude}}</b>
+        <div id="coords" ng-if="showCoords">
+            Latitude : <b>{{latitude}}</b><br>
+            Longitude : <b>{{longitude}}</b>
+        </div><br>
+        <button id="bouton_coords" ng-click="showCoords = !showCoords">Montrer mes coordonnées</button>
     </div>
 
     <label for="city">

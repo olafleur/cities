@@ -59,4 +59,14 @@ public class RechercheVilleSteps {
         /* do nothing, css class is not present, assert is passed */
         }
     }
+
+    @Quand("^je clique sur le bouton pour afficher les coordonnées$")
+    public void jeCliqueSurLeBoutonPourAfficherLesCoordonnées() throws Throwable {
+        driver.findElement(By.id("bouton_coords")).click();
+    }
+
+    @Alors("^je devrais voir mes coordonnées apparaître$")
+    public void jeDevraisVoirMesCoordonnéesApparaître() throws Throwable {
+        wait.until((ExpectedCondition<Boolean>) webdriver -> webdriver.findElement(By.id("coords")) != null);
+    }
 }
