@@ -5,7 +5,7 @@ Fonctionnalité: Recherche d'une ville
   Scénario: Une recherche d'une ville existante
     Étant donné que j'entre sur la page de recherche de villes
     Quand j'entre la chaine amo
-    Alors je devrais trouver Amo dans les résultats de ville
+    Alors je devrais trouver Amos dans les résultats de ville
 
   Scénario: Une recherche d'une ville inexistante
     Étant donné que j'entre sur la page de recherche de villes

@@ -70,5 +70,7 @@ public class RechercheVilleSteps {
     @Alors("^je devrais voir mes coordonnées apparaître$")
     public void jeDevraisVoirMesCoordonnéesApparaître() throws Throwable {
         wait.until((ExpectedCondition<Boolean>) webdriver -> webdriver.findElement(By.id("coords")) != null);
+
+        driver.close();
     }
 }
