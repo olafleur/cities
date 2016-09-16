@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class RechercheUnitSteps {
     private SuggestionService suggestionService;
@@ -31,6 +32,21 @@ public class RechercheUnitSteps {
     @Alors("^je devrais avoir (\\d+) villes suggérées$")
     public void jeDevraisAvoirVillesSuggérées(int nb) throws Throwable {
         assertEquals(nb, suggestions.size());
+    }
+
+    @Alors("^la ville (.*) devrait être suggérée$")
+    public void laVilleDevraitÊtreSuggérée(String ville) throws Throwable {
+        boolean bonnesuggestion = false;
+
+        for(Suggestion suggestion : suggestions)
+        {
+            if(suggestion.getName().contains(ville))
+            {
+                bonnesuggestion = true;
+            }
+        }
+
+        assertTrue(bonnesuggestion);
     }
 
     private class TestRepository implements Repository {
